@@ -13,6 +13,9 @@ class Drive(Subsystem):
         self.rightFrontMotor = wpilib.Talon(DriveMap.PWM_RIGHT_FRONT)
         self.rightBackMotor = wpilib.Talon(DriveMap.PWM_RIGHT_BACK)
 
+    def initDefaultCommand(self):
+        self.setDefaultCommand(DriveWithJoysticks(self.robot))
+
     def setLeftSpeed(self, speed):
         self.leftFrontMotor.set(speed)
         self.leftBackMotor.set(speed)
