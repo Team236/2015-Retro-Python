@@ -11,29 +11,29 @@ from commands.drivewithjoysticks import DriveWithJoysticks
 
 class Robot(wpilib.IterativeRobot):
     def robotInit(self):
+        super().__init__()
         self.drive = Drive(self)
         self.oi = OI(self)
 
-        # Commands
         self.DriveWithJoysticks = DriveWithJoysticks(self)
 
-    def operatorControl(self):
-        self.drive.setSafetyEnabled(True)
+    def autonomousInit(self):
+        pass
 
-        self.DriveWithJoysticks.start()
+    def autonomousPeriodic(self):
+        pass
 
-        while self.isOperatorControl() and self.isEnabled():
-            wpilib.Timer.delay(.005)
-
-    def disabled(self):
+    def disabledInit(self):
         self.DriveWithJoysticks.cancel()
 
-        while self.isDisabled():
-            wpilib.Timer.delay(0.01)
+    def disabledPeriodic(self):
+        pass
 
-    def autonomous(self):
-        while self.isAutonomous() and self.isEnabled():
-            wpilib.Timer.delay(0.01)
+    def teleopInit(self):
+        self.DriveWithJoysticks.start()
+
+    def disabledInit(self):
+        self.DriveWithJoysticks.cancel()
 
 if __name__ == '__main__':
     wpilib.run(Robot)
