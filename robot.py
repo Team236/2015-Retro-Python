@@ -32,6 +32,9 @@ class Robot(wpilib.IterativeRobot):
     def teleopInit(self):
         self.DriveWithJoysticks.start()
 
+    def teleopPeriodic(self):
+        Scheduler.getInstance().run()
+
     def disabledInit(self):
         self.DriveWithJoysticks.cancel()
 
