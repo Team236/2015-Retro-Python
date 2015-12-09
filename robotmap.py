@@ -4,6 +4,11 @@ class DriveMap:
     PWM_RIGHT_FRONT = 2
     PWM_RIGHT_BACK = 3
 
+    DIO_ENCODER_RIGHT_A = 0
+    DIO_ENCODER_RIGHT_B = 1
+    DIO_ENCODER_LEFT_A = 2
+    DIO_ENCODER_LEFT_B = 3
+
 class JoystickMap:
     PORT_LEFT = 0
     PORT_RIGHT = 1

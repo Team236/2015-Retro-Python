@@ -13,6 +13,9 @@ class Drive(Subsystem):
         self.rightFrontMotor = wpilib.Talon(DriveMap.PWM_RIGHT_FRONT)
         self.rightBackMotor = wpilib.Talon(DriveMap.PWM_RIGHT_BACK)
 
+        self.leftEncoder = wpilib.Encoder(DriveMap.DIO_ENCODER_LEFT_A, DriveMap.DIO_ENCODER_LEFT_B)
+        self.rightEncoder = wpilib.Encoder(DriveMap.DIO_ENCODER_RIGHT_A, DriveMap.DIO_ENCODER_RIGHt_B)
+
     def initDefaultCommand(self):
         self.setDefaultCommand(DriveWithJoysticks(self.robot))
 
@@ -31,3 +34,13 @@ class Drive(Subsystem):
     def stop(self):
         self.setLeftSpeed(0)
         self.setRightSpeed(0)
+
+    def getLeftEncoder(self):
+        return self.leftEncoder.get()
+
+    def getRightEncoder(self):
+        return self.rightEncoder.get()
+
+    def zeroEncoders(self):
+        self.leftEncoder.reset()
+        self.rightEncoder.reset()
